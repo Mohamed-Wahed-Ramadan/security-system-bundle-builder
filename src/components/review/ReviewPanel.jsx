@@ -1,5 +1,6 @@
 import ProductImage from "../product/ProductImage";
 import QuantityStepper from "../product/QuantityStepper";
+import ShippingIcon from "../ui/ShippingIcon";
 import { REVIEW_GROUP_ORDER } from "../../constants/bundle";
 import guaranteeBadgeImage from "../../assets/guarantee-badge.png";
 
@@ -39,7 +40,9 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
       ))}
 
       <div className="review-line review-line--shipping">
-        <div className="review-line__thumb review-line__thumb--icon">🚚</div>
+        <div className="review-line__thumb review-line__thumb--icon">
+          <ShippingIcon width={20} height={20} />
+        </div>
         <span className="review-line__name">{shipping.label}</span>
         <span className="review-line__spacer" />
         <span className="review-line__price">
