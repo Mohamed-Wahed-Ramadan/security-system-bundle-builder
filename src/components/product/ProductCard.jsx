@@ -27,6 +27,7 @@ export default function ProductCard({ product, activeVariantId, onSelectVariant,
         variants={product.variants}
         activeVariant={variantId}
         onSelect={(nextVariantId) => onSelectVariant(product.id, nextVariantId)}
+        shape={product.shape}
       />
 
       <div className="product-card__footer">

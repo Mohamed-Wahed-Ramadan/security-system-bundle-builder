@@ -1,4 +1,6 @@
-export default function VariantSelector({ variants, activeVariant, onSelect }) {
+import ProductImage from "./ProductImage";
+
+export default function VariantSelector({ variants, activeVariant, onSelect, shape }) {
   if (!variants || variants.length === 0) return null;
 
   return (
@@ -10,7 +12,12 @@ export default function VariantSelector({ variants, activeVariant, onSelect }) {
           className={`variant-chip ${activeVariant === variant.id ? "variant-chip--active" : ""}`}
           onClick={() => onSelect(variant.id)}
         >
-          <span className="variant-chip__swatch" style={{ background: variant.swatch }} />
+          <ProductImage
+            shape={shape}
+            tint={variant.swatch}
+            size={20}
+            className="variant-chip__thumb"
+          />
           <span className="variant-chip__label">{variant.label}</span>
         </button>
       ))}

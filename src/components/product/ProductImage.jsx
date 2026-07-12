@@ -1,7 +1,7 @@
-export default function ProductImage({ shape, tint = "#F5F5F5", size = 72 }) {
+export default function ProductImage({ shape, tint = "#F5F5F5", size = 72, className = "" }) {
   const body = tint;
   const dark = "#20242C";
-  const common = { width: size, height: size, viewBox: "0 0 96 96" };
+  const common = { width: size, height: size, viewBox: "0 0 96 96", className };
 
   switch (shape) {
     case "camera":
