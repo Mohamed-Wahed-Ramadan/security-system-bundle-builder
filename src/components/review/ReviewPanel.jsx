@@ -1,6 +1,7 @@
 import ProductImage from "../product/ProductImage";
 import QuantityStepper from "../product/QuantityStepper";
 import { REVIEW_GROUP_ORDER } from "../../constants/bundle";
+import guaranteeBadgeImage from "../../assets/guarantee-badge.png";
 
 export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, financingText, onQuantityChange, saveForLater, saveMessage }) {
   return (
@@ -49,8 +50,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
 
       <div className="review-panel__totals">
         <div className="guarantee-badge">
-          <span className="guarantee-badge__pct">{guarantee.badgeText}</span>
-          <span className="guarantee-badge__sub">{guarantee.badgeSubtext}</span>
+          <img src={guaranteeBadgeImage} alt="Guarantee badge" className="guarantee-badge__image" />
         </div>
         <div className="review-panel__totals-text">
           <p className="guarantee-heading">{guarantee.heading}</p>
