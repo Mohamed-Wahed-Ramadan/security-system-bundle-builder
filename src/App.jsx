@@ -1,8 +1,7 @@
 import { useBundleState } from "./hooks/useBundleState";
-import BundleStep from "./components/BundleStep";
-import ProductCard from "./components/ProductCard";
-import PlanCard from "./components/PlanCard";
-import ReviewPanel from "./components/ReviewPanel";
+import BundleStep from "./components/builder/BundleStep";
+import StepContent from "./components/builder/StepContent";
+import ReviewPanel from "./components/review/ReviewPanel";
 import "./App.css";
 
 export default function App() {
@@ -21,33 +20,6 @@ export default function App() {
     totals,
   } = useBundleState();
 
-  const productsByCategory = (category) => data.products.filter((p) => p.category === category);
-
-  const renderStepContent = (step) => {
-    if (step.category === "plan") {
-      return (
-        <div className="plan-list">
-          {data.plans.map((plan) => (
-            <PlanCard key={plan.id} plan={plan} onSelect={() => {}} />
-          ))}
-        </div>
-      );
-    }
-    return (
-      <div className="product-grid">
-        {productsByCategory(step.category).map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            activeVariantId={activeVariants[product.id]}
-            onSelectVariant={setActiveVariant}
-            onQuantityChange={setQuantity}
-          />
-        ))}
-      </div>
-    );
-  };
-
   return (
     <div className="bundle-app">
       <h1 className="bundle-app__mobile-title">Let's get started!</h1>
@@ -63,7 +35,13 @@ export default function App() {
               onNext={() => goToStep(data.steps[index + 1]?.id)}
               isLastStep={index === data.steps.length - 1}
             >
-              {renderStepContent(step)}
+              <StepContent
+                step={step}
+                data={data}
+                activeVariants={activeVariants}
+                setActiveVariant={setActiveVariant}
+                setQuantity={setQuantity}
+              />
             </BundleStep>
           ))}
         </div>
