@@ -1,12 +1,12 @@
 import PlanCard from "../product/PlanCard";
 import ProductCard from "../product/ProductCard";
 
-export default function StepContent({ step, data, activeVariants, setActiveVariant, setQuantity }) {
+export default function StepContent({ step, data, activeVariants, setActiveVariant, setPlanSelection, setQuantity }) {
   if (step.category === "plan") {
     return (
       <div className="plan-list">
         {data.plans.map((plan) => (
-          <PlanCard key={plan.id} plan={plan} onSelect={() => {}} />
+          <PlanCard key={plan.id} plan={plan} onSelect={(planId) => setPlanSelection(planId, true)} />
         ))}
       </div>
     );

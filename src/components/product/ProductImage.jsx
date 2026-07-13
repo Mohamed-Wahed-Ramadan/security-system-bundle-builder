@@ -1,3 +1,5 @@
+import wyzeLogo from "../../assets/icon.png";
+
 export default function ProductImage({ shape, tint = "#F5F5F5", size = 72, className = "" }) {
   const body = tint;
   const dark = "#20242C";
@@ -82,8 +84,9 @@ export default function ProductImage({ shape, tint = "#F5F5F5", size = 72, class
     case "plan":
       return (
         <svg {...common}>
-          <path d="M48 12l28 12v18c0 18-12 32-28 34-16-2-28-16-28-34V24l28-12z" fill="#EEF0FC" stroke="#5B4FE5" strokeWidth="2" />
-          <path d="M36 48l8 8 16-16" stroke="#5B4FE5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <foreignObject width="96" height="96">
+            <img src={wyzeLogo} alt="Wyze logo" width="96" height="96" />
+          </foreignObject>
         </svg>
       );
     default:

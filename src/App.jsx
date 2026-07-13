@@ -12,6 +12,7 @@ export default function App() {
     saveMessage,
     setQuantity,
     setActiveVariant,
+    setPlanSelection,
     toggleStep,
     goToStep,
     saveForLater,
@@ -40,6 +41,7 @@ export default function App() {
                 data={data}
                 activeVariants={activeVariants}
                 setActiveVariant={setActiveVariant}
+                setPlanSelection={setPlanSelection}
                 setQuantity={setQuantity}
               />
             </BundleStep>

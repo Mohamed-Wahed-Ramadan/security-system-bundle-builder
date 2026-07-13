@@ -1,10 +1,31 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { SAVE_MESSAGE_DURATION_MS, DEFAULT_OPEN_STEP } from "../constants/bundle";
-import { buildInitialActiveVariants, buildReviewLines, calculateTotals, getInitialBundleData, getSelectedCount, getTotalQuantity } from "../utils/bundle";
+import { SAVE_MESSAGE_DURATION_MS, DEFAULT_OPEN_STEP, STORAGE_KEY } from "../constants/bundle";
+import { buildInitialActiveVariants, buildReviewLines, calculateTotals, getSelectedCount, getTotalQuantity, cloneSeedData } from "../utils/bundle";
+
+function readSavedBundleState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed?.data && parsed?.activeVariants) {
+        return parsed;
+      }
+      if (parsed?.products && parsed?.plans) {
+        return { data: parsed, activeVariants: buildInitialActiveVariants(parsed.products) };
+      }
+    }
+  } catch (error) {
+    // ignore corrupted storage and fall back to seed
+  }
+
+  const seedData = cloneSeedData();
+  return { data: seedData, activeVariants: buildInitialActiveVariants(seedData.products) };
+}
 
 export function useBundleState() {
-  const [data, setData] = useState(getInitialBundleData);
-  const [activeVariants, setActiveVariants] = useState(() => buildInitialActiveVariants(getInitialBundleData().products));
+  const initialState = useMemo(() => readSavedBundleState(), []);
+  const [data, setData] = useState(initialState.data);
+  const [activeVariants, setActiveVariants] = useState(initialState.activeVariants);
   const [openStep, setOpenStep] = useState(DEFAULT_OPEN_STEP);
   const [saveMessage, setSaveMessage] = useState("");
 
@@ -29,6 +50,13 @@ export function useBundleState() {
     setActiveVariants((prev) => ({ ...prev, [productId]: variantId }));
   }, []);
 
+  const setPlanSelection = useCallback((planId, isSelected) => {
+    setData((prev) => ({
+      ...prev,
+      plans: prev.plans.map((plan) => ({ ...plan, selected: plan.id === planId ? isSelected : false })),
+    }));
+  }, []);
+
   const toggleStep = useCallback((stepId) => {
     setOpenStep((prev) => (prev === stepId ? null : stepId));
   }, []);
@@ -39,12 +67,12 @@ export function useBundleState() {
 
   const saveForLater = useCallback(() => {
     try {
-      localStorage.setItem("wyze-bundle-saved-system-v1", JSON.stringify(data));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, activeVariants }));
       setSaveMessage("Saved! Your system will be here when you return.");
     } catch (error) {
       setSaveMessage("Couldn't save right now — try again.");
     }
-  }, [data]);
+  }, [data, activeVariants]);
 
   const totalQtyForProduct = useCallback((product) => getTotalQuantity(product), []);
 
@@ -61,6 +89,7 @@ export function useBundleState() {
     saveMessage,
     setQuantity,
     setActiveVariant,
+    setPlanSelection,
     toggleStep,
     goToStep,
     saveForLater,
