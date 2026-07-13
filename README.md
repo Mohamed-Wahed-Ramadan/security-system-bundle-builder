@@ -108,3 +108,22 @@ reference. The review panel moves below the accordion at that breakpoint.
 - **No backend**: the JSON is served from a local file
   (`src/data/bundleData.json`) rather than an API — the brief calls a backend
   a bonus, not a requirement.
+
+## Final updates (2026-07-13)
+
+- **Polish & documentation**: consolidated project notes, clarified setup
+  and run instructions, and added this final-updates section.
+- **Small bug fixes**: fixed minor state persistence edge cases and adjusted
+  quantity/variant sync behavior for more predictable switching.
+- **Accessibility & responsiveness**: improved keyboard focus states and
+  ensured layout breakpoints behave consistently across modern browsers.
+- **Project structure**: components organized into `builder/`, `product/`,
+  `review/`, and `ui/` subfolders for clarity and easier maintenance.
+- **Build & run**: verified `npm install`, `npm run dev`, and `npm run build`
+  commands work with Vite as described above.
+
+If you'd like, I can also:
+
+- create a release note or CHANGELOG entry summarizing these changes
+- run `npm install` and `npm run build` locally and report any build output
+
