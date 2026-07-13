@@ -20,6 +20,13 @@ export default function App() {
     reviewLines,
     totals,
   } = useBundleState();
+  const computedFinancingText = (() => {
+    const base = data.financingText;
+    if (!totals) return base;
+    const diff = totals.compareAt - totals.price;
+    if (typeof diff !== "number" || diff <= 0) return base;
+    return `as low as $${diff.toFixed(2)}/mo`;
+  })();
 
   return (
     <div className="bundle-app">
@@ -53,7 +60,7 @@ export default function App() {
           totals={totals}
           shipping={data.shipping}
           guarantee={data.guarantee}
-          financingText={data.financingText}
+          financingText={computedFinancingText}
           onQuantityChange={setQuantity}
           saveForLater={saveForLater}
           saveMessage={saveMessage}

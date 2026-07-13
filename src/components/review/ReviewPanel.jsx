@@ -108,11 +108,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
             </div>
           </div>
           
-          {totals.savings > 0 && (
-            <p className="review-panel__savings">
-              Congrats! You're saving ${totals.savings.toFixed(2)} on your security bundle!
-            </p>
-          )}
+          
           
           <div className="review-panel__price-row">
             <span className="financing-pill">{financingText}</span>
@@ -122,7 +118,11 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
             </div>
           </div>
         </div>
-
+        {totals.savings > 0 && (
+            <p className="review-panel__savings">
+              Congrats! You're saving ${totals.savings.toFixed(2)} on your security bundle!
+            </p>
+          )}
         <button
           type="button"
           className="btn btn--primary review-panel__checkout"

@@ -67,9 +67,9 @@ button {
 
 /* ---------- Accordion step ---------- */
 
-.bundle-step {
-  /* border-bottom: 1px solid var(--color-border); */
-}
+/* .bundle-step {
+  border-bottom: 1px solid var(--color-border);
+} */
 
 .bundle-step:last-child {
   border-bottom: none;
@@ -540,9 +540,9 @@ button {
   padding: 10px 0;
 }
 
-.review-group .review-line:not(:last-child) {
-  /* border-bottom: 1px solid #e8eaf3; */
-}
+/* .review-group .review-line:not(:last-child) {
+  border-bottom: 1px solid #e8eaf3;
+} */
 
 .review-line__thumb {
   width: 36px;
@@ -718,7 +718,9 @@ button {
   font-size: 12px;
   font-weight: 600;
   color: var(--color-success);
-  margin: 4px 0 0;
+  margin: 10px;
+  /* margin: auto; */
+  text-align: center;
 }
 
 .review-panel__checkout {
