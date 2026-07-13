@@ -1,6 +1,15 @@
-export default function QuantityStepper({ value, onChange, disabled = false, size = "md" }) {
+export default function QuantityStepper({ value, onChange, disabled = false, size = "md", variant = "default" }) {
+  const className = [
+    "stepper",
+    `stepper--${size}`,
+    variant !== "default" ? `stepper--${variant}` : "",
+    disabled ? "stepper--disabled" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={`stepper stepper--${size} ${disabled ? "stepper--disabled" : ""}`}>
+    <div className={className}>
       <button
         type="button"
         className="stepper__btn"

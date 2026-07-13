@@ -4,6 +4,33 @@ import ShippingIcon from "../ui/ShippingIcon";
 import { REVIEW_GROUP_ORDER } from "../../constants/bundle";
 import guaranteeBadgeImage from "../../assets/guarantee-badge.png";
 
+function formatReviewPrice(amount, billingSuffix = "") {
+  return `$${amount.toFixed(2)}${billingSuffix}`;
+}
+
+function ReviewLinePrice({ unitCompare, lineTotal, billingSuffix = "" }) {
+  return (
+    <div className="review-line__price">
+      <span className="review-line__price-compare">{formatReviewPrice(unitCompare, billingSuffix)}</span>
+      <span className="review-line__price-current">
+        {lineTotal === 0 ? "FREE" : formatReviewPrice(lineTotal, billingSuffix)}
+      </span>
+    </div>
+  );
+}
+
+function ReviewLineName({ line }) {
+  if (line.isPlan) {
+    return (
+      <span className="review-line__name">
+        Cam <span className="review-line__name-accent">Unlimited</span>
+      </span>
+    );
+  }
+
+  return <span className="review-line__name">{line.name}</span>;
+}
+
 export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, financingText, onQuantityChange, saveForLater, saveMessage }) {
   return (
     <aside className="review-panel">
@@ -27,19 +54,26 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
                   alt={line.name}
                 />
               </div>
-              <span className="review-line__name">{line.name}</span>
-              {!line.isPlan && !line.locked ? (
-                <QuantityStepper
-                  size="sm"
-                  value={line.qty}
-                  onChange={(nextQuantity) => onQuantityChange(line.productId, line.variantId, nextQuantity)}
-                />
-              ) : (
-                <span className="review-line__spacer" />
-              )}
-              <span className="review-line__price">
-                {line.price === 0 ? "FREE" : `$${line.lineTotal.toFixed(2)}${line.billingSuffix || ""}`}
-              </span>
+
+              <ReviewLineName line={line} />
+
+              <div className="review-line__controls">
+                {!line.isPlan && (
+                  <QuantityStepper
+                    variant="review"
+                    size="sm"
+                    value={line.qty}
+                    disabled={line.locked}
+                    onChange={(nextQuantity) => onQuantityChange(line.productId, line.variantId, nextQuantity)}
+                  />
+                )}
+              </div>
+
+              <ReviewLinePrice
+                unitCompare={line.compareAtPrice ?? line.price}
+                lineTotal={line.lineTotal}
+                billingSuffix={line.billingSuffix}
+              />
             </div>
           ))}
         </div>
@@ -50,11 +84,8 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
           <ShippingIcon width={20} height={20} />
         </div>
         <span className="review-line__name">{shipping.label}</span>
-        <span className="review-line__spacer" />
-        <span className="review-line__price">
-          <span className="price price--compare">${shipping.compareAtPrice.toFixed(2)}</span>{" "}
-          <span className="price--free">{shipping.price === 0 ? "FREE" : `$${shipping.price.toFixed(2)}`}</span>
-        </span>
+        <div className="review-line__controls" />
+        <ReviewLinePrice unitCompare={shipping.compareAtPrice} lineTotal={shipping.price} />
       </div>
 
       <div className="review-panel__totals">

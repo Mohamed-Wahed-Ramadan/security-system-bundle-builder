@@ -64,6 +64,7 @@ export function buildReviewLines(data) {
         shape: product.shape,
         qty: quantity,
         price: product.price,
+        compareAtPrice: product.compareAtPrice,
         lineTotal: product.price * quantity,
         locked: !!product.locked,
       });
@@ -81,6 +82,7 @@ export function buildReviewLines(data) {
         shape: "plan",
         qty: 1,
         price: plan.price,
+        compareAtPrice: plan.compareAtPrice,
         billingSuffix: plan.billingSuffix,
         lineTotal: plan.price,
         isPlan: true,
