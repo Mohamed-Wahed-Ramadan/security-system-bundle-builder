@@ -182,8 +182,8 @@ button {
 
 .product-card__badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: -12px;
+  left: -12px;
   background: var(--color-badge);
   color: #fff;
   font-size: 11px;
@@ -468,12 +468,24 @@ button {
 /* ---------- Review panel ---------- */
 
 .review-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   background: var(--color-panel-bg);
   border-radius: var(--radius-lg);
-  padding: 22px;
+  padding: 28px;
+}
+
+.review-panel__main {
+  min-width: 0;
+}
+
+.review-panel__side {
+  min-width: 0;
 }
 
 .review-panel__eyebrow {
+  display: block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -490,9 +502,9 @@ button {
   font-size: 12.5px;
   color: var(--color-muted);
   line-height: 1.5;
-  margin: 0 0 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #dfe1f5;
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
 }
 
 .review-group {
@@ -590,15 +602,21 @@ button {
 .review-line--shipping {
   padding-top: 10px;
   border-top: 1px solid #dfe1f5;
-  margin-bottom: 10px;
 }
 
 .review-panel__totals {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  padding-top: 14px;
+  padding-top: 18px;
+  margin-top: 18px;
   border-top: 1px solid #dfe1f5;
+  min-width: 0;
+}
+
+.review-panel__totals-text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .guarantee-badge {
@@ -654,6 +672,8 @@ button {
 .review-panel__total-row {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
+  row-gap: 2px;
   gap: 8px;
 }
 
@@ -700,9 +720,71 @@ button {
   margin: 6px 0 0;
 }
 
+/* On mid-width screens the review panel gets its full own row (see
+   bundle-app__layout below) and has room to lay its list out next to
+   the guarantee/checkout block, matching the wide "standalone" layout. */
+@media (min-width: 600px) and (max-width: 1149px) {
+  .review-panel {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .review-panel__subtitle {
+    margin-bottom: 0;
+  }
+
+  .review-line--shipping {
+    border-top: 1px solid #dfe1f5;
+  }
+
+  .review-panel__totals {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+  }
+}
+
+/* The side column is tightest right after the 600px breakpoint kicks in,
+   before there's enough room to grow — trim it down here so the price
+   and pill never push past the card edge. */
+@media (min-width: 600px) and (max-width: 720px) {
+  .review-panel {
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .guarantee-badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .guarantee-heading {
+    font-size: 12px;
+  }
+
+  .guarantee-body {
+    font-size: 11px;
+  }
+
+  .review-panel__total {
+    font-size: 18px;
+  }
+
+  .price--compare-lg {
+    font-size: 12px;
+  }
+
+  .financing-pill {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+}
+
 /* ---------- Desktop product cards (horizontal) ---------- */
 
-@media (min-width: 901px) {
+@media (min-width: 1150px) {
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
@@ -784,7 +866,7 @@ button {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 1149px) {
   .bundle-app__layout {
     grid-template-columns: 1fr;
   }
@@ -792,9 +874,15 @@ button {
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .product-card__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 599px) {
   .bundle-app {
     padding: 0;
   }
@@ -808,6 +896,7 @@ button {
   }
 
   .bundle-app__layout {
+    grid-template-columns: 1fr;
     gap: 0;
   }
 
@@ -831,6 +920,12 @@ button {
   .product-grid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+  }
+
+  .product-card__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .review-panel {
