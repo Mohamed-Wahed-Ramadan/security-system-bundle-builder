@@ -1,5 +1,6 @@
 import StepIcon from "../ui/StepIcon";
 
+
 export default function BundleStep({ step, isOpen, selectedCount, onToggle, children, onNext, isLastStep }) {
   return (
     <section className={`bundle-step ${isOpen ? "bundle-step--open" : ""}`}>
