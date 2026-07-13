@@ -1,6 +1,29 @@
 import wyzeLogo from "../../assets/icon.png";
+import { getProductImageSrc } from "../../utils/productImages";
 
-export default function ProductImage({ shape, tint = "#F5F5F5", size = 72, className = "" }) {
+export default function ProductImage({
+  shape,
+  tint = "#F5F5F5",
+  size = 72,
+  className = "",
+  productId,
+  variantId,
+  alt = "",
+}) {
+  const imageSrc = productId ? getProductImageSrc(productId, variantId) : null;
+
+  if (imageSrc) {
+    return (
+      <img
+        src={imageSrc}
+        alt={alt}
+        width={size}
+        height={size}
+        className={`product-image ${className}`.trim()}
+      />
+    );
+  }
+
   const body = tint;
   const dark = "#20242C";
   const common = { width: size, height: size, viewBox: "0 0 96 96", className };

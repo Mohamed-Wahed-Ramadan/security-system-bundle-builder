@@ -19,7 +19,13 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
           {reviewLines[group].map((line) => (
             <div className="review-line" key={line.key}>
               <div className="review-line__thumb">
-                <ProductImage shape={line.shape} size={40} />
+                <ProductImage
+                  productId={line.productId}
+                  variantId={line.variantId}
+                  shape={line.shape}
+                  size={36}
+                  alt={line.name}
+                />
               </div>
               <span className="review-line__name">{line.name}</span>
               {!line.isPlan && !line.locked ? (

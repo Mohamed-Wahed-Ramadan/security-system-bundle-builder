@@ -1,6 +1,6 @@
 import ProductImage from "./ProductImage";
 
-export default function VariantSelector({ variants, activeVariant, onSelect, shape }) {
+export default function VariantSelector({ productId, variants, activeVariant, onSelect, shape }) {
   if (!variants || variants.length === 0) return null;
 
   return (
@@ -13,6 +13,8 @@ export default function VariantSelector({ variants, activeVariant, onSelect, sha
           onClick={() => onSelect(variant.id)}
         >
           <ProductImage
+            productId={productId}
+            variantId={variant.id}
             shape={shape}
             tint={variant.swatch}
             size={20}
