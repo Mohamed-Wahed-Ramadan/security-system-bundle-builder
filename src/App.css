@@ -59,15 +59,16 @@ button {
 }
 
 .bundle-app__builder {
-  background: var(--color-panel-bg);
-  border-radius: var(--radius-lg);
+  background: #ffffff;
+  /* border-radius: var(--radius-lg); */
   overflow: hidden;
+  /* border: 1px solid var(--color-border); */
 }
 
 /* ---------- Accordion step ---------- */
 
 .bundle-step {
-  border-bottom: 1px solid #dfe1f5;
+  /* border-bottom: 1px solid var(--color-border); */
 }
 
 .bundle-step:last-child {
@@ -79,14 +80,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  background: #ffffff;
   border: none;
   cursor: pointer;
   padding: 18px 24px;
   text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.bundle-step__header:hover {
+  background-color: #f9f9f9;
 }
 
 .bundle-step--open .bundle-step__header {
+  background: var(--color-panel-bg);
   padding-bottom: 14px;
 }
 
@@ -136,6 +143,7 @@ button {
 
 .bundle-step__content {
   padding: 0 24px 24px;
+  background: var(--color-panel-bg);
 }
 
 /* ---------- Product grid & cards ---------- */
@@ -401,6 +409,9 @@ button {
   background: #fff;
   border: 1.5px solid var(--color-primary);
   color: var(--color-primary);
+  border-radius: 10px;
+  gap: 5px;
+  padding: 15px 20px;
 }
 
 .btn--primary {
@@ -414,7 +425,7 @@ button {
 }
 
 .bundle-step__next {
-  margin-top: 4px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -530,7 +541,7 @@ button {
 }
 
 .review-group .review-line:not(:last-child) {
-  border-bottom: 1px solid #e8eaf3;
+  /* border-bottom: 1px solid #e8eaf3; */
 }
 
 .review-line__thumb {
@@ -601,22 +612,31 @@ button {
 
 .review-line--shipping {
   padding-top: 10px;
-  border-top: 1px solid #dfe1f5;
+  border-top: 1px solid  #bfbfc0;
 }
 
 .review-panel__totals {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
   padding-top: 18px;
   margin-top: 18px;
-  border-top: 1px solid #dfe1f5;
+  /* border-top: 1px solid #dfe1f5; */
   min-width: 0;
 }
 
 .review-panel__totals-text {
-  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   min-width: 0;
+}
+
+.review-panel__badge-and-text {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
 }
 
 .guarantee-badge {
@@ -664,9 +684,16 @@ button {
   color: #fff;
   font-size: 10.5px;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 999px;
-  margin-bottom: 6px;
+  padding: 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.review-panel__price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .review-panel__total-row {
@@ -695,7 +722,13 @@ button {
 }
 
 .review-panel__checkout {
-  margin-top: 18px;
+  margin-top: 13px;
+  padding: 13px 16px;
+  border-radius: 4px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .review-panel__save-link {

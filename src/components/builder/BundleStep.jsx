@@ -3,9 +3,11 @@ import StepIcon from "../ui/StepIcon";
 export default function BundleStep({ step, isOpen, selectedCount, onToggle, children, onNext, isLastStep }) {
   return (
     <section className={`bundle-step ${isOpen ? "bundle-step--open" : ""}`}>
+      <span className="bundle-step__label">{step.stepLabel}</span> 
+      <hr/>
       <button type="button" className="bundle-step__header" onClick={onToggle} aria-expanded={isOpen}>
         <div className="bundle-step__heading">
-          <span className="bundle-step__label">{step.stepLabel}</span>
+          
           <div className="bundle-step__title-row">
             <StepIcon name={step.icon} className="bundle-step__icon" />
             <span className="bundle-step__title">{step.title}</span>
@@ -16,7 +18,7 @@ export default function BundleStep({ step, isOpen, selectedCount, onToggle, chil
           <StepIcon name={isOpen ? "chevron-up" : "chevron-down"} />
         </span>
       </button>
-
+<hr />
       {isOpen && (
         <div className="bundle-step__content">
           {children}

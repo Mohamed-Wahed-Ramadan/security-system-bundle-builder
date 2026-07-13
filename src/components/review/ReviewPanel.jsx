@@ -9,9 +9,13 @@ function formatReviewPrice(amount, billingSuffix = "") {
 }
 
 function ReviewLinePrice({ unitCompare, lineTotal, billingSuffix = "" }) {
+  const showComparePrice = typeof unitCompare === "number" && unitCompare > 0;
+
   return (
     <div className="review-line__price">
-      <span className="review-line__price-compare">{formatReviewPrice(unitCompare, billingSuffix)}</span>
+      {showComparePrice && (
+        <span className="review-line__price-compare">{formatReviewPrice(unitCompare, billingSuffix)}</span>
+      )}
       <span className="review-line__price-current">
         {lineTotal === 0 ? "FREE" : formatReviewPrice(lineTotal, billingSuffix)}
       </span>
@@ -44,6 +48,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
         {REVIEW_GROUP_ORDER.filter((group) => reviewLines[group]?.length).map((group) => (
           <div className="review-group" key={group}>
             <span className="review-group__label">{group}</span>
+            <hr/>
             {reviewLines[group].map((line) => (
               <div className="review-line" key={line.key}>
                 <div className="review-line__thumb">
@@ -75,6 +80,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
                   lineTotal={line.lineTotal}
                   billingSuffix={line.billingSuffix}
                 />
+                
               </div>
             ))}
           </div>
@@ -92,22 +98,28 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
 
       <div className="review-panel__side">
         <div className="review-panel__totals">
-          <div className="guarantee-badge">
-            <img src={guaranteeBadgeImage} alt="Guarantee badge" className="guarantee-badge__image" />
+          <div className="review-panel__badge-and-text">
+            <div className="guarantee-badge">
+              <img src={guaranteeBadgeImage} alt="Guarantee badge" className="guarantee-badge__image" />
+            </div>
+            <div className="review-panel__totals-text">
+              <p className="guarantee-heading">{guarantee.heading}</p>
+              <p className="guarantee-body">{guarantee.body}</p>
+            </div>
           </div>
-          <div className="review-panel__totals-text">
-            <p className="guarantee-heading">{guarantee.heading}</p>
-            <p className="guarantee-body">{guarantee.body}</p>
+          
+          {totals.savings > 0 && (
+            <p className="review-panel__savings">
+              Congrats! You're saving ${totals.savings.toFixed(2)} on your security bundle!
+            </p>
+          )}
+          
+          <div className="review-panel__price-row">
             <span className="financing-pill">{financingText}</span>
             <div className="review-panel__total-row">
               <span className="price price--compare price--compare-lg">${totals.compareAt.toFixed(2)}</span>
               <span className="review-panel__total">${totals.price.toFixed(2)}</span>
             </div>
-            {totals.savings > 0 && (
-              <p className="review-panel__savings">
-                Congrats! You're saving ${totals.savings.toFixed(2)} on your security bundle!
-              </p>
-            )}
           </div>
         </div>
 
