@@ -238,16 +238,6 @@
   text-align: center;
 }
 
-.review-panel__checkout {
-  margin-top: 13px;
-  padding: 13px 16px;
-  border-radius: 4px;
-  gap: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .review-panel__save-link {
   display: block;
   width: 100%;
@@ -268,6 +258,18 @@
   color: var(--color-success);
   font-weight: 600;
   margin: 6px 0 0;
+}
+
+.review-panel__checkout {
+  margin-top: 13px;
+  padding: 13px 16px;
+  border-radius: 4px;
+  gap: 8px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
 }
 
 @media (min-width: 600px) and (max-width: 1149px) {

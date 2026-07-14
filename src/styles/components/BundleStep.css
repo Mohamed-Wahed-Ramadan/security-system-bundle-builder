@@ -74,16 +74,27 @@
   padding: 24px 24px;
   border-radius: 10px;
   background: var(--color-panel-bg);
+  text-align: center;
 }
 
 /* Continue button displayed inside the step body. */
 .bundle-step__next {
-  margin-top: 10px;
-  display: flex;
+  margin: 5px auto;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 10px;
+  padding: 10px 24px;
+  border: 1px solid var(--color-primary);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  width: auto;
+}
+
+.bundle-step__next:hover {
+  background: rgba(91, 79, 229, 0.06);
 }
 
 @media (max-width: 599px) {

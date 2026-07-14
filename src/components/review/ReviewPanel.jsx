@@ -130,7 +130,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
           )}
         <button
           type="button"
-          className="btn btn--primary review-panel__checkout"
+          className=" btn--primary review-panel__checkout"
           onClick={() => window.alert("This is a prototype — checkout isn't wired up yet!")}
         >
           Checkout

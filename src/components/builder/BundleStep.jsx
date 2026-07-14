@@ -33,10 +33,10 @@ export default function BundleStep({ step, isOpen, selectedCount, onToggle, chil
       {isOpen && (
         <div className="bundle-step__content">
           {children}
-
+          <br />
           {/* Show the next action only when this is not the last step. */}
           {!isLastStep && (
-            <button type="button" className="btn btn--outline bundle-step__next" onClick={onNext}>
+            <button type="button" className="bundle-step__next" onClick={onNext}>
               {step.nextLabel}
             </button>
           )}
