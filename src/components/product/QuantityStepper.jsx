@@ -1,3 +1,5 @@
+import "../../styles/components/QuantityStepper.css";
+
 export default function QuantityStepper({ value, onChange, disabled = false, size = "md", variant = "default" }) {
   const className = [
     "stepper",

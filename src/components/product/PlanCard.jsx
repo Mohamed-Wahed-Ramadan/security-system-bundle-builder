@@ -1,4 +1,5 @@
 import ProductImage from "./ProductImage";
+import "../../styles/components/PlanCard.css";
 
 export default function PlanCard({ plan, onSelect }) {
   return (

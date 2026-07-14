@@ -1,0 +1,87 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.stepper__btn {
+  border: none;
+  background: #fff;
+  width: 26px;
+  height: 26px;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.stepper__btn:disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.stepper__value {
+  min-width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stepper--sm .stepper__btn {
+  width: 22px;
+  height: 22px;
+  font-size: 13px;
+}
+
+.stepper--disabled {
+  opacity: 0.5;
+}
+
+.stepper--review {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  gap: 8px;
+}
+
+.stepper--review .stepper__btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.stepper--review .stepper__btn:not(:disabled):hover {
+  background: #e5e7eb;
+}
+
+.stepper--review .stepper__value {
+  min-width: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@media (min-width: 600px) and (max-width: 1149px) {
+  .stepper {
+    width: fit-content;
+  }
+
+  .stepper__btn {
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+  }
+
+  .stepper__value {
+    min-width: 18px;
+    font-size: 12px;
+  }
+}

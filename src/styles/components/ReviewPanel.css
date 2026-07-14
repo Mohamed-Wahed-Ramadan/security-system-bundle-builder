@@ -1,0 +1,333 @@
+.review-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--color-panel-bg);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.review-panel__main {
+  min-width: 0;
+}
+
+.review-panel__side {
+  min-width: 0;
+}
+
+.review-panel__eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.review-panel__title {
+  font-size: 21px;
+  margin: 4px 0 6px;
+}
+
+.review-panel__subtitle {
+  font-size: 12.5px;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
+}
+
+.review-group {
+  margin-bottom: 14px;
+}
+
+.review-group__label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+
+.review-line {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.review-line__thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.review-line__thumb .product-image,
+.review-line__thumb svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.review-line__thumb--icon {
+  font-size: 16px;
+}
+
+.review-line__name {
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.review-line__name-accent {
+  color: var(--color-primary);
+}
+
+.review-line__controls {
+  display: flex;
+  justify-content: center;
+  min-width: 72px;
+}
+
+.review-line__spacer {
+  width: 1px;
+}
+
+.review-line__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 72px;
+}
+
+.review-line__price-compare {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.review-line__price-current {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.review-line--shipping {
+  padding-top: 10px;
+  border-top: 1px solid #bfbfc0;
+}
+
+.review-panel__totals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  padding-top: 18px;
+  margin-top: 18px;
+  min-width: 0;
+}
+
+.review-panel__totals-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.review-panel__badge-and-text {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.guarantee-badge {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guarantee-badge__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.guarantee-badge__pct {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.guarantee-badge__sub {
+  font-size: 8px;
+  font-weight: 600;
+  max-width: 50px;
+}
+
+.guarantee-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 3px;
+}
+
+.guarantee-body {
+  font-size: 11.5px;
+  color: var(--color-muted);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.financing-pill {
+  display: inline-block;
+  background: var(--color-badge);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.review-panel__price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.review-panel__total-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  row-gap: 2px;
+  gap: 8px;
+}
+
+.price--compare-lg {
+  font-size: 13px;
+}
+
+.review-panel__total {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.review-panel__savings {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-success);
+  margin: 10px;
+  text-align: center;
+}
+
+.review-panel__checkout {
+  margin-top: 13px;
+  padding: 13px 16px;
+  border-radius: 4px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-panel__save-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 12.5px;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 4px;
+}
+
+.review-panel__save-message {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-success);
+  font-weight: 600;
+  margin: 6px 0 0;
+}
+
+@media (min-width: 600px) and (max-width: 1149px) {
+  .review-panel {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .review-panel__subtitle {
+    margin-bottom: 0;
+  }
+
+  .review-line--shipping {
+    border-top: 1px solid #dfe1f5;
+  }
+
+  .review-panel__totals {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 720px) {
+  .review-panel {
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .guarantee-badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .guarantee-heading {
+    font-size: 12px;
+  }
+
+  .guarantee-body {
+    font-size: 11px;
+  }
+
+  .review-panel__total {
+    font-size: 18px;
+  }
+
+  .price--compare-lg {
+    font-size: 12px;
+  }
+
+  .financing-pill {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 599px) {
+  .review-panel {
+    border-radius: 0;
+    margin-top: 8px;
+  }
+}

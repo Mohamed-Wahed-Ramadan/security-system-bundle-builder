@@ -1,5 +1,6 @@
 import PlanCard from "../product/PlanCard";
 import ProductCard from "../product/ProductCard";
+import "../../styles/components/StepContent.css";
 
 export default function StepContent({ step, data, activeVariants, setActiveVariant, setPlanSelection, setQuantity }) {
   if (step.category === "plan") {

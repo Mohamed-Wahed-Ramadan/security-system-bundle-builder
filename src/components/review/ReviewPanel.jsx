@@ -3,6 +3,7 @@ import QuantityStepper from "../product/QuantityStepper";
 import ShippingIcon from "../ui/ShippingIcon";
 import { REVIEW_GROUP_ORDER } from "../../constants/bundle";
 import guaranteeBadgeImage from "../../assets/guarantee-badge.png";
+import "../../styles/components/ReviewPanel.css";
 
 function formatReviewPrice(amount, billingSuffix = "") {
   return `$${amount.toFixed(2)}${billingSuffix}`;

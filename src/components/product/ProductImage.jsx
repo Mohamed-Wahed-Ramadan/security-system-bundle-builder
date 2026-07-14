@@ -1,5 +1,6 @@
 import wyzeLogo from "../../assets/icon.png";
 import { getProductImageSrc } from "../../utils/productImages";
+import "../../styles/components/ProductImage.css";
 
 export default function ProductImage({
   shape,

@@ -2,7 +2,7 @@ import { useBundleState } from "./hooks/useBundleState";
 import BundleStep from "./components/builder/BundleStep";
 import StepContent from "./components/builder/StepContent";
 import ReviewPanel from "./components/review/ReviewPanel";
-import "./App.css";
+import "./styles/components/App.css";
 
 export default function App() {
   const {

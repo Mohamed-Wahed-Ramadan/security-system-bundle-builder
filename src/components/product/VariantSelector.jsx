@@ -1,4 +1,5 @@
 import ProductImage from "./ProductImage";
+import "../../styles/components/VariantSelector.css";
 
 export default function VariantSelector({ productId, variants, activeVariant, onSelect, shape }) {
   if (!variants || variants.length === 0) return null;

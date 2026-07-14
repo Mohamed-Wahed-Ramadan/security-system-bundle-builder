@@ -1,5 +1,5 @@
 import StepIcon from "../ui/StepIcon";
-
+import "../../styles/components/BundleStep.css";
 
 export default function BundleStep({ step, isOpen, selectedCount, onToggle, children, onNext, isLastStep }) {
   return (
@@ -16,7 +16,8 @@ export default function BundleStep({ step, isOpen, selectedCount, onToggle, chil
         </div>
         <span className="bundle-step__state">
           {selectedCount > 0 && <span className="bundle-step__count">{selectedCount} selected</span>}
-          <StepIcon name={isOpen ? "chevron-up" : "chevron-down"} />
+          {/* <StepIcon name={isOpen ? "chevron-up" : "chevron-down"} /> */}
+          <span>{isOpen ? "▲" : "▼"}</span>
         </span>
       </button>
 <hr />

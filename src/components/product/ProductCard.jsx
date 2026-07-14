@@ -2,6 +2,7 @@ import ProductImage from "./ProductImage";
 import VariantSelector from "./VariantSelector";
 import QuantityStepper from "./QuantityStepper";
 import { getProductVariantId } from "../../utils/bundle";
+import "../../styles/components/ProductCard.css";
 
 export default function ProductCard({ product, activeVariantId, onSelectVariant, onQuantityChange }) {
   const variantId = getProductVariantId(product, activeVariantId);
