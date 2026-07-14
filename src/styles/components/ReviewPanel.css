@@ -1,3 +1,4 @@
+/* Sidebar review summary showing the selected bundle and totals. */
 .review-panel {
   display: flex;
   flex-direction: column;

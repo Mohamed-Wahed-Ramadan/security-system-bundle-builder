@@ -2,7 +2,9 @@ import PlanCard from "../product/PlanCard";
 import ProductCard from "../product/ProductCard";
 import "../../styles/components/StepContent.css";
 
+// Render the correct content for the currently active builder step.
 export default function StepContent({ step, data, activeVariants, setActiveVariant, setPlanSelection, setQuantity }) {
+  // The plan step uses a different UI from the product-selection steps.
   if (step.category === "plan") {
     return (
       <div className="plan-list">
@@ -13,6 +15,7 @@ export default function StepContent({ step, data, activeVariants, setActiveVaria
     );
   }
 
+  // Other steps show a grid of products that match the selected category.
   return (
     <div className="product-grid">
       {data.products

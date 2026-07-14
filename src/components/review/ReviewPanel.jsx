@@ -5,10 +5,12 @@ import { REVIEW_GROUP_ORDER } from "../../constants/bundle";
 import guaranteeBadgeImage from "../../assets/guarantee-badge.png";
 import "../../styles/components/ReviewPanel.css";
 
+// Helper to format review prices consistently.
 function formatReviewPrice(amount, billingSuffix = "") {
   return `$${amount.toFixed(2)}${billingSuffix}`;
 }
 
+// Single row price block used inside the review summary.
 function ReviewLinePrice({ unitCompare, lineTotal, billingSuffix = "" }) {
   const showComparePrice = typeof unitCompare === "number" && unitCompare > 0;
 
@@ -24,6 +26,7 @@ function ReviewLinePrice({ unitCompare, lineTotal, billingSuffix = "" }) {
   );
 }
 
+// Label shown for a review row, including the special plan name.
 function ReviewLineName({ line }) {
   if (line.isPlan) {
     return (
@@ -36,6 +39,7 @@ function ReviewLineName({ line }) {
   return <span className="review-line__name">{line.name}</span>;
 }
 
+// Sidebar summary of the selected bundle before checkout.
 export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, financingText, onQuantityChange, saveForLater, saveMessage }) {
   return (
     <aside className="review-panel">

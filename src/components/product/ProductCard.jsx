@@ -4,7 +4,9 @@ import QuantityStepper from "./QuantityStepper";
 import { getProductVariantId } from "../../utils/bundle";
 import "../../styles/components/ProductCard.css";
 
+// Visual card for a single selectable product in the builder.
 export default function ProductCard({ product, activeVariantId, onSelectVariant, onQuantityChange }) {
+  // Resolve the active variant for this product and its current quantity.
   const variantId = getProductVariantId(product, activeVariantId);
   const quantity = product.quantities[variantId] ?? 0;
   const isSelected = quantity > 0;
@@ -14,6 +16,7 @@ export default function ProductCard({ product, activeVariantId, onSelectVariant,
   return (
     <div className={`product-card ${isSelected ? "product-card--selected" : ""}`}>
       <div className="product-card__media">
+        {/* Optional discount badge shown at the top-left of the card. */}
         {product.badge && <span className="product-card__badge">{product.badge}</span>}
         <div className="product-card__image">
           <ProductImage
@@ -33,6 +36,7 @@ export default function ProductCard({ product, activeVariantId, onSelectVariant,
           Learn More
         </a>
 
+        {/* Variant picker for choosing the product color or version. */}
         <VariantSelector
           productId={product.id}
           variants={product.variants}
@@ -42,6 +46,7 @@ export default function ProductCard({ product, activeVariantId, onSelectVariant,
         />
 
         <div className="product-card__footer">
+          {/* Quantity selector for adding or removing this product from the bundle. */}
           <QuantityStepper
             value={quantity}
             disabled={!!product.locked}

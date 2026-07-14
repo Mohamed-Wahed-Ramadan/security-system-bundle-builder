@@ -1,7 +1,9 @@
+/* Styling for each accordion step in the builder flow. */
 .bundle-step:last-child {
   border-bottom: none;
 }
 
+/* Main header button that opens and closes the step content. */
 .bundle-step__header {
   width: 100%;
   display: flex;
@@ -74,6 +76,7 @@
   background: var(--color-panel-bg);
 }
 
+/* Continue button displayed inside the step body. */
 .bundle-step__next {
   margin-top: 10px;
   display: flex;
