@@ -10,8 +10,10 @@
   align-items: center;
   justify-content: space-between;
   background: #ffffff;
-  border: none;
-  cursor: pointer;
+border-top: 0.5px solid #1F1F1F;
+border-bottom: 0.5px solid #1F1F1F;
+border-left: none;
+border-right: none;  cursor: pointer;
   padding: 18px 24px;
   text-align: left;
   transition: background-color 0.2s ease;
@@ -24,6 +26,15 @@
 .bundle-step--open .bundle-step__header {
   background: var(--color-panel-bg);
   padding-bottom: 14px;
+  /* border-radius: 10px 10px 0 0; */
+  border: none;
+}
+.bundle-step--open .bundle-step__label {
+  background: var(--color-panel-bg);
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-muted);
+  border-radius: 10px 10px 0 0;
 }
 
 .bundle-step__heading {
@@ -72,7 +83,7 @@
 
 .bundle-step__content {
   padding: 24px 24px;
-  border-radius: 10px;
+    border-radius: 0 0 10px 10px;
   background: var(--color-panel-bg);
   text-align: center;
 }

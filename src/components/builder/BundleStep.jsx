@@ -7,7 +7,7 @@ export default function BundleStep({ step, isOpen, selectedCount, onToggle, chil
     <section className={`bundle-step ${isOpen ? "bundle-step--open" : ""}`}>
       {/* Label shown above each step, such as "STEP 1 OF 4". */}
       <span className="bundle-step__label">{step.stepLabel}</span>
-      <hr />
+      {/* <hr /> */}
 
       {/* Main toggle button for expanding/collapsing the step content. */}
       <button type="button" className="bundle-step__header" onClick={onToggle} aria-expanded={isOpen}>
@@ -27,7 +27,7 @@ export default function BundleStep({ step, isOpen, selectedCount, onToggle, chil
         </span>
       </button>
 
-      <hr />
+      {/* <hr /> */}
 
       {/* Render the step body only when the step is open. */}
       {isOpen && (

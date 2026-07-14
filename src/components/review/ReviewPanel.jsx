@@ -112,29 +112,37 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
             <p className="guarantee-body">{guarantee.body}</p>
           </div>
 
-          <span className="financing-pill">{financingText}</span>
+          <div className="review-panel__totals-right">
+            <span className="financing-pill">{financingText}</span>
 
-          <div className="review-panel__total-row">
-            <span className="price price--compare price--compare-lg">${totals.compareAt.toFixed(2)}</span>
-            <span className="review-panel__total">${totals.price.toFixed(2)}</span>
+            <div className="review-panel__total-row">
+              <span className="price price--compare price--compare-lg">${totals.compareAt.toFixed(2)}</span>
+              <span className="review-panel__total">${totals.price.toFixed(2)}</span>
+            </div>
           </div>
         </div>
-        {totals.savings > 0 && (
+        {/** Actions placed outside totals to ensure visibility across all breakpoints */}
+        <div className="review-panel__actions">
+          {totals.savings > 0 && (
             <p className="review-panel__savings">
               Congrats! You're saving ${totals.savings.toFixed(2)} on your security bundle!
             </p>
           )}
-        <button
-          type="button"
-          className=" btn--primary review-panel__checkout"
-          onClick={() => window.alert("This is a prototype — checkout isn't wired up yet!")}
-        >
-          Checkout
-        </button>
-        <button type="button" className="review-panel__save-link" onClick={saveForLater}>
-          Save my system for later
-        </button>
-        {saveMessage && <p className="review-panel__save-message">{saveMessage}</p>}
+
+          <button
+            type="button"
+            className=" btn--primary review-panel__checkout"
+            onClick={() => window.alert("This is a prototype — checkout isn't wired up yet!")}
+          >
+            Checkout
+          </button>
+
+          <button type="button" className="review-panel__save-link" onClick={saveForLater}>
+            Save my system for later
+          </button>
+
+          {saveMessage && <p className="review-panel__save-message">{saveMessage}</p>}
+        </div>
       </div>
     </aside>
   );
