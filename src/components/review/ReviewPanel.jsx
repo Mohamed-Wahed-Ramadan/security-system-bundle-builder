@@ -103,24 +103,20 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
 
       <div className="review-panel__side">
         <div className="review-panel__totals">
-          <div className="review-panel__badge-and-text">
-            <div className="guarantee-badge">
-              <img src={guaranteeBadgeImage} alt="Guarantee badge" className="guarantee-badge__image" />
-            </div>
-            <div className="review-panel__totals-text">
-              <p className="guarantee-heading">{guarantee.heading}</p>
-              <p className="guarantee-body">{guarantee.body}</p>
-            </div>
+          <div className="guarantee-badge">
+            <img src={guaranteeBadgeImage} alt="Guarantee badge" className="guarantee-badge__image" />
           </div>
-          
-          
-          
-          <div className="review-panel__price-row">
-            <span className="financing-pill">{financingText}</span>
-            <div className="review-panel__total-row">
-              <span className="price price--compare price--compare-lg">${totals.compareAt.toFixed(2)}</span>
-              <span className="review-panel__total">${totals.price.toFixed(2)}</span>
-            </div>
+
+          <div className="review-panel__totals-text">
+            <p className="guarantee-heading">{guarantee.heading}</p>
+            <p className="guarantee-body">{guarantee.body}</p>
+          </div>
+
+          <span className="financing-pill">{financingText}</span>
+
+          <div className="review-panel__total-row">
+            <span className="price price--compare price--compare-lg">${totals.compareAt.toFixed(2)}</span>
+            <span className="review-panel__total">${totals.price.toFixed(2)}</span>
           </div>
         </div>
         {totals.savings > 0 && (
