@@ -98,11 +98,16 @@ button {
   .bundle-app__layout {
     grid-template-columns: 1fr;
   }
+
+  .bundle-app {
+  padding: 32px 32px 50px;
+}
+
 }
 
 @media (max-width: 599px) {
   .bundle-app {
-    padding: 0;
+    padding: 5px;
   }
 
   .bundle-app__mobile-title {

@@ -45,6 +45,7 @@ export default function ReviewPanel({ reviewLines, totals, shipping, guarantee, 
     <aside className="review-panel">
       <div className="review-panel__main">
         <span className="review-panel__eyebrow">Review</span>
+        <br />
         <h2 className="review-panel__title">Your security system</h2>
         <p className="review-panel__subtitle">
           Review your personalized protection system designed to keep what matters most safe.
