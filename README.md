@@ -1,129 +1,106 @@
-# Bundle Builder — Frontend Take-Home
+# Security System Bundle Builder
 
-A two-column, data-driven bundle builder: a 4-step accordion on the left ("Choose your
-cameras" → "Choose your plan" → "Choose your sensors" → "Add extra protection") and a
-live "Your security system" review panel on the right.
+A modern and polished front-end experience for building a custom security system bundle. The app lets users choose cameras, a plan, sensors, and accessories, then instantly see a live review summary with pricing, shipping, and savings updates.
 
-## Run it
+## Overview
+
+This project is a React + Vite application that provides an interactive bundle-building experience inspired by a security product storefront. Users can:
+
+- browse and select security products across multiple steps
+- switch between product variants
+- adjust quantities dynamically
+- review their selected items in real time
+- save their system locally for later use
+
+## Repository
+
+- GitHub: https://github.com/Mohamed-Wahed-Ramadan/security-system-bundle-builder
+
+## Getting Started
+
+### 1) Clone the repository
+
+```bash
+git clone https://github.com/Mohamed-Wahed-Ramadan/security-system-bundle-builder.git
+cd security-system-bundle-builder
+```
+
+### 2) Install dependencies
 
 ```bash
 npm install
+```
+
+### 3) Run the app locally
+
+```bash
 npm run dev
 ```
 
-Then open the printed local URL (usually `http://localhost:5173`).
+Then open the local URL shown in the terminal, usually:
 
-To produce a production build:
+```text
+http://localhost:5173
+```
+
+### 4) Build for production
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Project structure
+## Features
 
-```
+- Multi-step bundle builder experience
+- Live review panel with pricing and totals
+- Variant selection and quantity management
+- Responsive layout for desktop and mobile screens
+- Local persistence using browser storage
+- Clean modular component structure
+
+## Technology Stack
+
+This project is built with:
+
+- React 19
+- Vite
+- JavaScript / JSX
+- CSS for component styling
+- Vitest for testing
+- React Icons
+
+## Project Structure
+
+```text
 src/
-  data/bundleData.json     -- the single JSON source of truth (steps, products,
-                               plans, shipping, guarantee copy). Everything on
-                               screen is rendered from this file; no per-product
-                               markup is hardcoded.
-  hooks/useBundleState.js  -- all state: quantities per variant, active variant
-                               per product, open accordion step, selected counts,
-                               grouped review lines, totals/savings, and the
-                               localStorage save/restore for "Save my system
-                               for later".
-  components/
-    BundleStep.jsx         -- one accordion step (header + collapsible content)
-    ProductCard.jsx        -- a builder-side product card
-    PlanCard.jsx           -- the plan option shown in "Choose your plan"
-    VariantSelector.jsx    -- the color/variant chip row
-    QuantityStepper.jsx    -- the shared +/- stepper (used on cards AND in the
-                               review panel, bound to the same state)
-    ReviewPanel.jsx        -- the right-hand summary
-    ProductImage.jsx       -- lightweight inline SVG illustrations per product
-                               (see "Product images" below)
-    StepIcon.jsx           -- step + chevron icons
-  App.jsx / App.css        -- layout + all styling
+  App.jsx                  # Main application layout
+  components/              # UI and builder components
+  hooks/                   # State management logic
+  data/                    # Seed data for products, plans, and content
+  styles/                  # Component styling
+  utils/                   # Helper functions for calculations and data processing
 ```
 
-## How the interactions work
+## How the App Works
 
-- **Quantities are stored per variant**, e.g. `{ white: 1, grey: 0, black: 0 }`.
-  Selecting a color only changes which variant is "active" for that card; it does
-  not touch any variant's count. The stepper always reads/writes the *active*
-  variant's quantity, so switching from Red (2) to Blue shows 0, and switching
-  back shows 2 again.
-- **The review panel renders one line per variant with qty > 0** across every
-  product, so Red ×2 and Blue ×1 of the same product both show up as their own
-  lines if you add both. If a product has just one active variant, its line
-  omits the variant suffix to match the clean look in the design.
-- **The review panel's quantity steppers write to the exact same state** as the
-  card steppers (`setQuantity` from the hook), so editing either place keeps
-  everything in sync, including the "N selected" counts and the total.
-- **"N selected"** counts distinct products (not variant lines) in a step that
-  have at least one variant with qty > 0. The plan step counts 1 when a plan is
-  selected.
-- **Totals**: the reviewed total is the sum of `price × qty` for every
-  product line plus the selected plan's monthly price (matching the design,
-  where the plan's price is folded directly into the same total as the
-  hardware). Shipping is shown as its own line (with a struck-through compare
-  price) but isn't included in the total/savings math, since it's already free
-  in the seed data — this matches the numbers in the provided mock exactly
-  ($238.81 struck through → $187.89, saving $50.92).
-- **Persistence**: "Save my system for later" writes the full state (all
-  quantities + active variants) to `localStorage`. On load, the app checks for
-  a saved system first and restores it; if none exists yet, it seeds from
-  `bundleData.json` so a fresh clone matches the design exactly. Reloading the
-  page (or coming back later) after saving restores things exactly as they
-  were left.
+The application uses a central state hook to manage:
 
-## Responsiveness
+- selected quantities per product and variant
+- active variant selection
+- chosen plan
+- live review totals
+- saved bundle state in local storage
 
-The two-column layout collapses to a single column under 900px, the product
-grid drops from 3 → 2 → 1 columns as space shrinks, and a mobile-only "Let's
-get started!" heading appears under ~600px, matching the provided mobile
-reference. The review panel moves below the accordion at that breakpoint.
+The review panel updates instantly as users make changes, making the experience feel interactive and seamless.
 
-## Decisions, tradeoffs, and what I didn't finish
+## Notes
 
-- **Product photography**: I didn't have access to the real Wyze product
-  photos (or general internet image fetches) in this environment, so each
-  product renders a small inline SVG illustration instead (see
-  `ProductImage.jsx`) rather than a raster photo. Swapping in real photos is a
-  drop-in change — just add an `image` URL to each product in
-  `bundleData.json` and render an `<img>` instead of `<ProductImage />`.
-- **Variant chip styling**: per the brief, I did not spend time on a
-  bespoke "selected chip" visual treatment — chips get a light highlight on the
-  active one, but the focus went into the selection-and-quantity behavior and
-  making sure it flows through to the review panel correctly.
-- **"Choose your plan"**: the design only shows this step collapsed, so I
-  built a single-plan selectable card (Cam Unlimited) using the same visual
-  language as the rest of the builder; there's only one plan in the seed data
-  since that's all the mock specifies.
-- **Financing line** ("as low as $19.19/mo"): kept as a static string from the
-  data file rather than computed, since no amortization/APR was specified.
-- **Checkout button**: shows a placeholder confirmation (`window.alert`), as
-  called out as acceptable in the brief.
-- **No backend**: the JSON is served from a local file
-  (`src/data/bundleData.json`) rather than an API — the brief calls a backend
-  a bonus, not a requirement.
+- The project uses local JSON data rather than a backend API.
+- Product illustrations are rendered as lightweight inline visuals, making the app self-contained.
+- The design is optimized for a modern, polished user experience with responsive behavior across screen sizes.
 
-## Final updates (2026-07-13)
+## Author
 
-- **Polish & documentation**: consolidated project notes, clarified setup
-  and run instructions, and added this final-updates section.
-- **Small bug fixes**: fixed minor state persistence edge cases and adjusted
-  quantity/variant sync behavior for more predictable switching.
-- **Accessibility & responsiveness**: improved keyboard focus states and
-  ensured layout breakpoints behave consistently across modern browsers.
-- **Project structure**: components organized into `builder/`, `product/`,
-  `review/`, and `ui/` subfolders for clarity and easier maintenance.
-- **Build & run**: verified `npm install`, `npm run dev`, and `npm run build`
-  commands work with Vite as described above.
-
-If you'd like, I can also:
-
-- create a release note or CHANGELOG entry summarizing these changes
-- run `npm install` and `npm run build` locally and report any build output
+Developed by Mohamed Wahed Ramadan.
 
