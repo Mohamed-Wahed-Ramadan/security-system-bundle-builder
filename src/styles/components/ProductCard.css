@@ -215,8 +215,11 @@ border-width: 2px;
 
   .product-card__image svg,
   .product-card__image .product-image {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 151px;
+    opacity: 1;
+    transform: none;
+    border-radius: 0;
   }
 
   .product-card__body {
@@ -279,8 +282,10 @@ border-width: 2px;
   }
 
   .product-card__image .product-image {
-    width: 56px;
-    height: 56px;
+    width: 202.60000610351562px;
+    height: 117.39439392089844px;
+    opacity: 1;
+    border-radius: 5px;
   }
 
   .product-card__title {
