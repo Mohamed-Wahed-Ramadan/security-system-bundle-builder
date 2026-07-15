@@ -30,11 +30,19 @@ border-right: none;  cursor: pointer;
   border: none;
 }
 .bundle-step--open .bundle-step__label {
-  background: var(--color-panel-bg);
+  background:#EDF4FF;
   display: block;
   padding: 10px;
   border-bottom: 1px solid var(--color-muted);
   border-radius: 10px 10px 0 0;
+  font-family: Gilroy-Medium;
+font-weight: 400;
+font-style: ☞;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 1.6px;
+text-transform: uppercase;
+color: #484848;
 }
 
 .bundle-step__heading {
@@ -44,11 +52,15 @@ border-right: none;  cursor: pointer;
 }
 
 .bundle-step__label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-muted);
-  text-transform: uppercase;
+  color:#484848;
+  font-family: Gilroy-Medium;
+font-weight: 400;
+font-size: 12px;
+line-height: 100%;
+letter-spacing: 1.6px;
+vertical-align: middle;
+text-transform: uppercase;
+
 }
 
 .bundle-step__title-row {
@@ -63,8 +75,12 @@ border-right: none;  cursor: pointer;
 }
 
 .bundle-step__title {
-  font-size: 17px;
-  font-weight: 700;
+  font-family: Gilroy-SemiBold;
+font-weight: 400;
+font-size: 22px;
+line-height: 100%;
+letter-spacing: 0px;
+color: #0B0D10;
 }
 
 .bundle-step__state {
@@ -78,7 +94,14 @@ border-right: none;  cursor: pointer;
 }
 
 .bundle-step__count {
-  color: var(--color-primary);
+  color: #4E2FD2;
+  font-family: Gilroy-Medium;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+letter-spacing: 0px;
+text-align: center;
+
 }
 
 .bundle-step__content {
@@ -90,18 +113,34 @@ border-right: none;  cursor: pointer;
 
 /* Continue button displayed inside the step body. */
 .bundle-step__next {
-  margin: 5px auto;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 10px 24px;
-  border: 1px solid var(--color-primary);
-  border-radius: 7px;
+  border: 1px solid #4E2FD2;
   background: transparent;
-  color: var(--color-primary);
-  font-weight: 700;
-  width: auto;
+  color: #4E2FD2;
+
+  width: 242;
+height: 39;
+padding-top: 5px;
+padding-right: 24px;
+padding-bottom: 5px;
+padding-left: 24px;
+gap: 10px;
+/* angle: 0 deg; */
+opacity: 1;
+border-radius: 7px;
+font-family: Gilroy-SemiBold;
+font-weight: 400;
+font-size: 18px;
+/* leading-trim: NONE; */
+line-height: 24px;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+
+
 }
 
 .bundle-step__next:hover {

@@ -24,7 +24,7 @@ export default function QuantityStepper({ value, onChange, disabled = false, siz
       <span className="stepper__value">{value}</span>
       <button
         type="button"
-        className="stepper__btn"
+        className="stepper__btn2"
         onClick={() => onChange(value + 1)}
         disabled={disabled}
         aria-label="Increase quantity"

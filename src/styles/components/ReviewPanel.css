@@ -228,15 +228,27 @@
   grid-area: pill;
   justify-self: end;
   display: inline-block;
-  background: var(--color-badge);
   color: #fff;
-  padding: 8px;
   border-radius: 3px;
-  font-family: Gilroy-Medium;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: -5%;
+    width: 113;
+height: 18;
+padding-top: 5px;
+padding-right: 8px;
+padding-bottom: 5px;
+padding-left: 8px;
+gap: 10px;
+/* angle: 0 deg; */
+opacity: 1;
+border-radius: 3px;
+background: #4E2FD2;
+
+font-family: Gilroy-Medium;
+font-weight: 400;
+font-size: 12px;
+/* leading-trim: CAP_HEIGHT; */
+line-height: 100%;
+letter-spacing: -5%;
+
 }
 
 .review-panel__total-row {
@@ -324,6 +336,7 @@
   line-height: 100%;
   letter-spacing: 0px;
   text-align: center;
+  background: #4E2FD2;
 }
 
 @media (min-width: 600px) and (max-width: 1149px) {
@@ -365,11 +378,32 @@
     grid-area: text;
   }
 
-  .financing-pill {
+  /* .financing-pill {
     grid-area: pill;
     justify-self: start;
     align-self: end;
-  }
+
+    width: 113;
+height: 18;
+padding-top: 5px;
+padding-right: 8px;
+padding-bottom: 5px;
+padding-left: 8px;
+gap: 10px;
+angle: 0 deg;
+opacity: 1;
+border-radius: 3px;
+background: #4E2FD2;
+
+font-family: Gilroy-Medium;
+font-weight: 400;
+font-style: ☞;
+font-size: 12px;
+leading-trim: CAP_HEIGHT;
+line-height: 100%;
+letter-spacing: -5%;
+
+  } */
 
   .review-panel__total-row {
     grid-area: price;
@@ -404,10 +438,10 @@
     font-size: 12px;
   }
 
-  .financing-pill {
+  /* .financing-pill {
     font-size: 10px;
     padding: 3px 7px;
-  }
+  } */
 }
 
 @media (max-width: 599px) {
