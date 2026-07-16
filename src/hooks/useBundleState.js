@@ -14,7 +14,7 @@ function readSavedBundleState() {
         return { data: parsed, activeVariants: buildInitialActiveVariants(parsed.products) };
       }
     }
-  } catch (error) {
+  } catch {
     // ignore corrupted storage and fall back to seed
   }
 
@@ -69,7 +69,7 @@ export function useBundleState() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, activeVariants }));
       setSaveMessage("Saved! Your system will be here when you return.");
-    } catch (error) {
+    } catch {
       setSaveMessage("Couldn't save right now — try again.");
     }
   }, [data, activeVariants]);

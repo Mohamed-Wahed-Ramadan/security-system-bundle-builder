@@ -1,24 +1,8 @@
 import seedData from "../data/bundleData.json";
-import { DEFAULT_VARIANT_ID, STORAGE_KEY } from "../constants/bundle";
+import { DEFAULT_VARIANT_ID } from "../constants/bundle";
 
 export function cloneSeedData() {
   return JSON.parse(JSON.stringify(seedData));
-}
-
-export function getInitialBundleData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed && parsed.products && parsed.plans) {
-        return parsed;
-      }
-    }
-  } catch (error) {
-    // ignore corrupted storage and fall back to seed
-  }
-
-  return cloneSeedData();
 }
 
 export function buildInitialActiveVariants(products) {
