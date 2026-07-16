@@ -180,8 +180,10 @@ vertical-align: middle;
     /* padding: 20px 24px; */
     /* gap: 28px; */
 
-    width: 224.60000610351562;
-height: 331.1000061035156;
+    /* width: 224.60000610351562;
+height: 331.1000061035156; */
+width: auto;
+height: auto;
 padding-top: 15px;
 padding-right: 11px;
 padding-bottom: 15px;
