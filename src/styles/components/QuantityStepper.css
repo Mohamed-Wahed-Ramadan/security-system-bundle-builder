@@ -5,8 +5,8 @@
   /* border-radius: 999px; */
   overflow: hidden;
   width: fit-content;
-  width: 80;
-height: 35;
+  width: auto;
+height: auto;
 padding-top: 4px;
 padding-bottom: 4px;
 gap: 10px;
@@ -24,8 +24,8 @@ border-radius: 4px;
   cursor: pointer;
   color: #CED6DE;
 
-  width: 20;
-height: 20;
+  width: auto;
+height: auto;
 gap: 10px;
 /* angle: 0 deg; */
 opacity: 1;
@@ -43,8 +43,8 @@ border: 2px solid #E6EBF0;
   color: #525963;
   
 
-width: 20;
-height: 20;
+width: auto;
+height: auto;
 gap: 10px;
 /* angle: 0 deg; */
 opacity: 1;
